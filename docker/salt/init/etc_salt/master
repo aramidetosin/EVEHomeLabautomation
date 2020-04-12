@@ -6,16 +6,16 @@ gitfs_update_interval: 300
 gitfs_remotes:
   - ssh://git@github.com/aramidetosin/EVEHomeLabautomation.git:
     - name: templates
-    - root: docker/salt/chap1/templates
-    - mountpoint: salt://docker/salt/chap1/templates
+    - root: docker/salt/test_lab/salt/templates
+    - mountpoint: salt://docker/salt/test_lab/salt/templates
   - ssh://git@github.com/aramidetosin/EVEHomeLabautomation.git:
     - name: states
-    - root: docker/salt/chap1/states
-    - mountpoint: salt://docker/salt/chap1/states
+    - root: docker/salt/test_lab/states
+    - mountpoint: salt://docker/salt/test_lab/states
 
 git_pillar_update_interval: 300
 ext_pillar:
   - git:
     - master ssh://git@github.com/aramidetosin/EVEHomeLabautomation.git:
-      - root: docker/salt/chap1/pillar
-      - mountpoint: docker/salt/chap1/pillar
+      - root: docker/salt/test_lab/pillar
+      - mountpoint: docker/salt/test_lab/pillar
