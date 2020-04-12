@@ -1,0 +1,14 @@
+fileserver_backend:
+  - gitfs
+gitfs_provider: gitpython
+gitfs_base: master
+gitfs_update_interval: 300
+gitfs_remotes:
+  - https://github.com/aramidetosin/EVEHomeLabautomation.git:
+    - name: templates
+    - root: docker/salt/chap1/templates
+    - mountpoint: salt://docker/salt/chap1/templates
+  - https://github.com/aramidetosin/EVEHomeLabautomation.git:
+    - name: states
+    - root: docker/salt/chap1/states
+    - mountpoint: salt://docker/salt/chap1/states
