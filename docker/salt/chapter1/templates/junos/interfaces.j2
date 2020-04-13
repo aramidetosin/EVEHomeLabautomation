@@ -1,7 +1,7 @@
 interfaces {
 {% for intf in pillar.interfaces %}
     {{intf.interface}} {
-{% for unt in unit.interfaces %}}
+{% for unt in intf.unit %}}
         unit {{unt.unit_id}} {
 {% if unt.ipv4addr %}
             family inet {
