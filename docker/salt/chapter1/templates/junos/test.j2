@@ -1,4 +1,15 @@
 interfaces {
+{% for intf in pillar.interfaces %}
+    {{intf.interface}} {
+{% for unit in intf.unit %}
+        unit {{unit.unit_id}} {
+            family inet {
+                address {{unit.ipv4addr}};
+            }
+        }
+{% endfor %}
+    }
+{% endfor %}
     lo0 {
         unit 0 {
             family inet {
