@@ -4,7 +4,9 @@ interfaces {
 {% for unit in intf.unit %}
         unit {{unit.unit_id}} {
             family inet {
-                address {{unit.ipv4addr}};
+{% for ipadd in unit.ipv4addr %}
+                address {{ipadd}};
+{% endfor %}
             }
         }
 {% endfor %}
