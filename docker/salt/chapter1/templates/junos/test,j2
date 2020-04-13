@@ -1,0 +1,16 @@
+interfaces {
+    lo0 {
+        unit 0 {
+            family inet {
+                address {{pillar.loopbackv4}};
+            }
+        }
+    }
+    fxp0 {
+        unit 0 {
+            family inet {
+                address {{pillar.mgmtipv4}};
+            }
+        }
+    }
+}
