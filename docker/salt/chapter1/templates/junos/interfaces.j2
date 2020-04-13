@@ -1,5 +1,5 @@
 interfaces {
-{% for intf in interfaces %}
+{% for intf in pillar.interfaces %}
     {{intf.interface}} {
 {% for unt in unit.interfaces %}}
         unit {{unt.unit_id}} {
