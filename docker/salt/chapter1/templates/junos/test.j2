@@ -11,7 +11,7 @@ interfaces {
             }
 {% endif %}
 {% if unit.ipv6addr is defined %}
-            family inet {
+            family inet6 {
 {% for ipadd in unit.ipv6addr %}
                 address {{ipadd}};
 {% endfor %}
