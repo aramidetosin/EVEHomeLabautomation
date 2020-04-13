@@ -10,6 +10,13 @@ interfaces {
 {% endfor %}
             }
 {% endif %}
+{% if unt.ipv6addr %}
+            family inet {
+{% for ipadd6 in unit.ipv6addr %}
+                address {{ipadd6}};
+{% endfor %}
+            }
+{% endif %}
         }
 {% endfor %}
     }
