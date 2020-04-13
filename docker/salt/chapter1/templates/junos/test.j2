@@ -3,17 +3,10 @@ interfaces {
     {{intf.interface}} {
 {% for unit in intf.unit %}
         unit {{unit.unit_id}} {
-{% if unt.ipv4addr %}
+{% if unit.ipv4addr %}
             family inet {
 {% for ipadd in unit.ipv4addr %}
                 address {{ipadd}};
-{% endfor %}
-            }
-{% endif %}
-{% if unt.ipv6addr %}
-            family inet {
-{% for ipadd6 in unit.ipv6addr %}
-                address {{ipadd6}};
 {% endfor %}
             }
 {% endif %}
