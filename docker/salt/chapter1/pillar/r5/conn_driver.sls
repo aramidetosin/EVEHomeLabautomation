@@ -1,8 +1,8 @@
 proxy:
   proxytype: napalm
-  driver: iosxr
-  host: 10.100.100.108
+  driver: eos
+  host: 10.100.100.107
   username: salt
   password: salt123
   optional_args:
-    port: 22
+    enable_password: salt123
