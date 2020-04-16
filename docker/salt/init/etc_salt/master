@@ -7,15 +7,21 @@ gitfs_remotes:
   - ssh://git@github.com/aramidetosin/EVEHomeLabautomation.git:
     - name: templates
     - root: docker/salt/chapter1/templates
-    - mountpoint: salt://docker/salt/chapter1/templates
+    - mountpoint: salt://chapter1/templates
   - ssh://git@github.com/aramidetosin/EVEHomeLabautomation.git:
     - name: states
     - root: docker/salt/chapter1/states
-    - mountpoint: salt://docker/salt/chapter1/states
+    - mountpoint: salt://chapter1/states
+  - ssh://git@github.com/aramidetosin/EVEHomeLabautomation.git:
+    - name: custom_modules
+    - root: docker/salt/init/modules
+    - mountpoint: salt://modules
 
-git_pillar_update_interval: 300
-ext_pillar:
-  - git:
-    - master ssh://git@github.com/aramidetosin/EVEHomeLabautomation.git:
-      - root: docker/salt/chapter1/pillar
-      - mountpoint: docker/salt/chapter1/pillar
+#git_pillar_provider: gitpython
+#git_pillar_base: master
+#git_pillar_update_interval: 120
+#ext_pillar:
+#  - git:
+#    - master git@github.com:aramidetosin/EVEHomeLabautomation.git:
+#      - root: docker/salt/chapter1/pillar
+#      - mountpoint: docker/salt/chapter1/pillar
