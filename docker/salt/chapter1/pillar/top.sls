@@ -13,9 +13,11 @@ base:
   cisco-r1:
     - r3.conn_driver
     - r3.router
+    - r3.interfaces
   cisco-xr-r1:
     - r4.conn_driver
     - r4.router
+    - r4.interfaces
   arista-r1:
     - r5.conn_driver
     - r5.router
