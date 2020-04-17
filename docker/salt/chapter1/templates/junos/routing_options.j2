@@ -7,7 +7,7 @@
 routing-options {
     static {
         route {{network}} {
-            next-hop {{gateway}};
+            next-hop {{pillar.mgmtint}};
             no-readvertise;
         }
     }
