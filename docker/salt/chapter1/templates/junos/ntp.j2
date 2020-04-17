@@ -1,10 +1,10 @@
 system {
   replace:
     ntp {
-      {% for server in servers %}
+      {% for server in ntp.servers %}
       server {{server}}
       {%- endfor %}
-      {% for peer in peers %}
+      {% for peer in ntp.peers %}
       peer {{peer}}
       {%- endfor %}
     }
