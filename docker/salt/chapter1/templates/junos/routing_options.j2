@@ -7,7 +7,7 @@
 routing-options {
     static {
         route {{network}} {
-            next-hop {{proxy.pillar.host}};
+            next-hop {{salt.grains.get("host")}};
             no-readvertise;
         }
     }
