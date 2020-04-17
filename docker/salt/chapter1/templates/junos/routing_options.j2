@@ -1,7 +1,13 @@
+{% set hosts = pillar.mgmtipv4 | network_hosts %}
+{% set gateway = hosts[0] %}
+{% set three_octets =  hosts[-1].split('.')[:3] %}
+{% set network = three_octets | join('.') + ".0/24" %}
+
+
 routing-options {
     static {
-        route {{pillar.mgmtipv4 | network_hosts }} {
-            next-hop {{pillar.mgmtipv4 | network_hosts[0] }};
+        route {{network}} {
+            next-hop {{gateway}};
             no-readvertise;
         }
     }
