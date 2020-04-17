@@ -1,7 +1,7 @@
 no ntp
-{%- for server in ntp.servers %}
+{%- for server in pillar.ntp.servers %}
 ntp server {{server}}
 {%- endfor %}
-{%- for peer in ntp.peers %}
+{%- for peer in pillar.ntp.peers %}
 ntp peer {{peer}}
 {%- endfor %}
