@@ -4,3 +4,8 @@ interfaces:
       - unit_id: 0
         ipv4addr: ['10.10.1.1/24', '20.10.10.10/24']
         ipv6addr: ['2a02::/64']
+  - interface: ge-0/0/1
+    unit:
+      - unit_id: 0
+        ipv4addr: ['10.10.1.1/24', '20.10.10.10/24']
+        ipv6addr: ['2a02::/64']
