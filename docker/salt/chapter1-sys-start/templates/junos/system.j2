@@ -1,0 +1,33 @@
+system {
+    host-name {{pillar.devname}};
+    root-authentication {
+        encrypted-password "$1$nese6//0$/1MPwrY4sdjmwRCj2LiCV0"; ## SECRET-DATA
+    }
+    login {
+        user salt {
+            uid 2000;
+            class super-user;
+            authentication {
+                encrypted-password "$1$4OMChVmU$ZUsJE.KWTpXAFlxdFEVgO."; ## SECRET-DATA
+            }
+        }
+    }
+    services {
+        ssh;
+        netconf {
+            ssh;
+        }
+    }
+    syslog {
+        user * {
+            any emergency;
+        }
+        file messages {
+            any notice;
+            authorization info;
+        }
+        file interactive-commands {
+            interactive-commands any;
+        }
+    }
+}

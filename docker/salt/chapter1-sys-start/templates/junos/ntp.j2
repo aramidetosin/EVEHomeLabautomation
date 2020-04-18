@@ -1,0 +1,11 @@
+system {
+  replace:
+    ntp {
+      {% for server in pillar.ntp.servers %}
+      server {{server}}
+      {%- endfor %}
+      {% for peer in pillar.ntp.peers %}
+      peer {{peer}}
+      {%- endfor %}
+    }
+}

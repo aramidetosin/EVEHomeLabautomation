@@ -1,0 +1,7 @@
+system {
+    name-server {
+       {% for server in pillar.dns.servers %}
+       {{server}}
+      {% endfor %}
+    }
+}

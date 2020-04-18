@@ -1,0 +1,38 @@
+interfaces {
+{% for intf in pillar.interfaces %}
+    {{intf.interface}} {
+{% for unit in intf.unit %}
+        unit {{unit.unit_id}} {
+{% if unit.ipv4addr is defined %}
+            family inet {
+{% for ipadd in unit.ipv4addr %}
+                address {{ipadd}};
+{% endfor %}
+            }
+{% endif %}
+{% if unit.ipv6addr is defined %}
+            family inet6 {
+{% for ipadd in unit.ipv6addr %}
+                address {{ipadd}};
+{% endfor %}
+            }
+{% endif %}
+        }
+{% endfor %}
+    }
+{% endfor %}
+    lo0 {
+        unit 0 {
+            family inet {
+                address {{pillar.loopbackv4}};
+            }
+        }
+    }
+    em0 {
+        unit 0 {
+            family inet {
+                address {{pillar.mgmtipv4}};
+            }
+        }
+    }
+}
