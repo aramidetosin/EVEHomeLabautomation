@@ -1,5 +1,7 @@
 base:
   '*':
+    - regional.classes
+    - regional.users
     - regional.dns
     - regional.ntp
   r1:
