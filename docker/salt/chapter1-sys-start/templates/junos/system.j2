@@ -4,30 +4,53 @@ system {
         encrypted-password "$1$nese6//0$/1MPwrY4sdjmwRCj2LiCV0"; ## SECRET-DATA
     }
     login {
-        user salt {
-            uid 2000;
-            class super-user;
+
+    {%- for class in pillar.classes %}
+        class {{class}}
+            permissions all;
+            deny-commands "start shell";
+    {% endfor %}
+
+    {% for user_dict in pillar.users %}
+    {% for user, user_info in user_dict.items() %}
+        user {{user}} {
+            uid {{user_info.uid}};
+            class {{user_info.class}};
             authentication {
-                encrypted-password "$1$4OMChVmU$ZUsJE.KWTpXAFlxdFEVgO."; ## SECRET-DATA
+                encrypted-password "{{user_info.password}}"; ## SECRET-DATA
+            }
+        }
+    {% endfor %}
+    {% endfor %}
+    }
+    services {
+        ssh {
+            root-login allow;
+        }
+        web-management {
+            http {
+                interface fxp0.0;
             }
         }
     }
-    services {
-        ssh;
-        netconf {
-            ssh;
-        }
-    }
     syslog {
+        archive size 100k files 3;
         user * {
             any emergency;
         }
         file messages {
-            any notice;
+            any critical;
             authorization info;
         }
         file interactive-commands {
-            interactive-commands any;
+            interactive-commands error;
+        }
+    }
+    max-configurations-on-flash 5;
+    max-configuration-rollbacks 5;
+    license {
+        autoupdate {
+            url https://ae1.juniper.net/junos/key_retrieval;
         }
     }
 }
