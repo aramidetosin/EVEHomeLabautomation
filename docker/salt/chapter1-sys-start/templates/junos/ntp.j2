@@ -1,9 +1,11 @@
+{% set servers = salt.pillar.get("ntp.server") %}
+{% set peers = salt.pillar.get("ntp.peers") %}
 system {
     ntp {
-      {% for server in salt.pillar.get("ntp.server") %}
+      {% for server in servers %}
       server {{server}}
       {%- endfor %}
-      {% for peer in salt.pillar.get("ntp.peers") %}
+      {% for peer in peers %}
       peer {{peer}}
       {%- endfor %}
     }
