@@ -1,10 +1,10 @@
 system {
   replace:
     ntp {
-      {% for server in pillar.ntp.servers %}
+      {% for server in salt.pillar.get("ntp.server") %}
       server {{server}}
       {%- endfor %}
-      {% for peer in pillar.ntp.peers %}
+      {% for peer in salt.pillar.get("ntp.peers") %}
       peer {{peer}}
       {%- endfor %}
     }
