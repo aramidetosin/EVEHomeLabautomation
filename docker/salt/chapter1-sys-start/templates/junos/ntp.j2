@@ -1,5 +1,4 @@
 system {
-  replace:
     ntp {
       {% for server in salt.pillar.get("ntp.server") %}
       server {{server}}
