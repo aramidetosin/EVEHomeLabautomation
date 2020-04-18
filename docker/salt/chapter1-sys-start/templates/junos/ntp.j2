@@ -3,10 +3,10 @@
 system {
     ntp {
       {% for server in servers %}
-      server {{server}}
+      server {{server}};
       {%- endfor %}
       {% for peer in peers %}
-      peer {{peer}}
+      peer {{peer}};
       {%- endfor %}
     }
 }
