@@ -20,6 +20,8 @@ RUN pip3 install --upgrade pip
 
 RUN pip3 install napalm
 
+RUN pip3 install jxmlease
+
 # Run the following command to import the SaltStack repository key
 
 RUN wget -O - https://repo.saltstack.com/py3/ubuntu/16.04/amd64/latest/SALTSTACK-GPG-KEY.pub | sudo apt-key add -
