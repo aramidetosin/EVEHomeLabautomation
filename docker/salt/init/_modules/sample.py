@@ -14,8 +14,13 @@ def third():
 
 
 def users():
-    pattern = re.compile(r"user")
-    res = __salt__["napalm.netmiko_commands"](
+    regex_users = r"user\s(?P<user>\S+)\s+\{"
+    result = __salt__["napalm.netmiko_commands"](
         "show configuration system login")
-    matches = pattern.finditer(res)
-    return matches
+    matches = re.finditer(regex_users, result, re.MULTILINE)
+
+    for matchNum, match in enumerate(matches, start=1):
+        for groupNum in range(0, len(match.groups())):
+            groupNum = groupNum + 1
+            group = match.group(groupNum)
+            return group
