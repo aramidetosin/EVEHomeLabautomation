@@ -14,4 +14,7 @@ def users():
     users = []
     res = __salt__["napalm.netmiko_commands"](
         "show configuration system login")
-    return res
+    for lines in res[0]:
+        for user in re.findall(r'user[\w\.-]+', lines):
+            users.append(user)
+    return users
