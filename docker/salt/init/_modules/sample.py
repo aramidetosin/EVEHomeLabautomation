@@ -7,4 +7,4 @@ def second():
 
 
 def third():
-    return __salt__['example.first']()
+    return __salt__['sample.first']()
