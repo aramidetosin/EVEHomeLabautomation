@@ -11,12 +11,12 @@ def third():
 
 
 def users():
-    users = []
+    regex_users = r"user\s(?P<user>\S+)\s+\{"
     res = __salt__["napalm.netmiko_commands"](
         "show configuration system login")
-    for lines in res[0]:
-        if "salt" in lines:
-            users.append(lines)
-        else:
-            return "None found"
-    return users
+    matches = re.finditer(regex_users, test_str, re.MULTILINE)
+    for matchNum, match in enumerate(matches, start=1):
+        for groupNum in range(0, len(match.groups())):
+            groupNum = groupNum + 1
+            group = match.group(groupNum)
+            return group
