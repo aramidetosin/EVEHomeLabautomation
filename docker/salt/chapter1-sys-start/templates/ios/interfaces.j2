@@ -1,5 +1,4 @@
 {# TO DO - Create filter to get network id and network mask from cidr#}
-{% if pillar.interfaces is defined %}
 {% for interface_dict in pillar.interfaces %}
 {% for intf , addr_dict in interface_dict.items() %}
   {% if "." in intf %}
@@ -22,7 +21,6 @@ interface {{intf}}
   no shut
 {% endfor -%}
 {% endfor -%}
-{% endif %}
 interface {{pillar.mgmtint}}
   ip address {{pillar.mgmtipv4.split("/")[0]}} 255.255.255.0
   no shut
