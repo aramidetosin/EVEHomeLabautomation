@@ -18,7 +18,7 @@ gitfs_remotes:
     - mountpoint: salt://_modules
   - ssh://git@github.com/aramidetosin/EVEHomeLabautomation.git:
     - name: orchestration
-    - root: docker/salt/chap1/orch
+    - root: docker/salt/chapter1-sys-start/orch
     - mountpoint: salt://orch
   - ssh://git@github.com/aramidetosin/EVEHomeLabautomation.git:
     - name: reactor
