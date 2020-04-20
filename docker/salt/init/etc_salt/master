@@ -31,4 +31,4 @@ git_pillar_update_interval: 120
 ext_pillar:
   - git:
     - master ssh://git@github.com/aramidetosin/EVEHomeLabautomation.git:
-      - root: pillar
+      - root: docker/salt/chapter1-sys-start/pillar
