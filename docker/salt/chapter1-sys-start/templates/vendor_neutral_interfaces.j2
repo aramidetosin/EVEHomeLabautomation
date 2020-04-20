@@ -1,6 +1,5 @@
 {% if grains.os == 'junos' %}
 interfaces {
-{% if pillar.interfaces is defined %}
 {% for intf in pillar.interfaces %}
     {{intf.interface}} {
 {% for unit in intf.unit %}
@@ -23,7 +22,6 @@ interfaces {
 {% endfor %}
     }
 {% endfor %}
-{% endif %}
     lo0 {
         unit 0 {
             family inet {
@@ -41,7 +39,6 @@ interfaces {
 }
 {% elif grains.os == 'ios' %}
 {# TO DO - Create filter to get network id and network mask from cidr#}
-{% if pillar.interfaces is defined %}
 {% for interface_dict in pillar.interfaces %}
 {% for intf , addr_dict in interface_dict.items() %}
   {% if "." in intf %}
@@ -64,7 +61,6 @@ interface {{intf}}
   no shut
 {% endfor -%}
 {% endfor -%}
-{% endif %}
 interface {{pillar.mgmtint}}
   ip address {{pillar.mgmtipv4.split("/")[0]}} 255.255.255.0
   no shut
@@ -72,7 +68,6 @@ int lo0
   ip address {{pillar.loopbackv4.split("/")[0]}} 255.255.255.255
 {% else %}
 {# TO DO - Create filter to get network id and network mask from cidr#}
-{% if pillar.interfaces is defined %}
 {%- set interfaces = pillar.interfaces -%}
 
 {% for interface_dict in interfaces %}
@@ -90,7 +85,6 @@ interface {{intf}}
   no shut
 {% endfor -%}
 {% endfor -%}
-{% endif %}
 interface {{pillar.mgmtint}}
  ipv4 address {{pillar.mgmtipv4}}
  no shut
