@@ -12,11 +12,11 @@ interface {{intf}}
   {% if intf.description %}
   description {{intf.description}}
   {% endif %}
-  {% if unit.ipv4addr is defined %}
-  ip address {{unit.ipv4addr("/")[0]}} 255.255.255.0
+  {% if intf.ipv4addr is defined %}
+  ip address {{intf.ipv4addr("/")[0]}} 255.255.255.0
   {% endif %}
-  {% if unit.ipv6addr is defined %}
-  ipv6 address {{unit.ipv6addr}}
+  {% if intf.ipv6addr is defined %}
+  ipv6 address {{intf.ipv6addr}}
   {% endif %}
   no shut
 {% endfor -%}
