@@ -13,7 +13,7 @@ interface {{intf}}
   description {{intf.description}}
   {% endif %}
   {% if intf.ipv4addr %}
-  ip address {{intf.ipv4addr("/")[0]}} 255.255.255.0
+  ip address {{intf.ipv4addr.split("/")[0]}} 255.255.255.0
   {% endif %}
   {% if intf.ipv6addr %}
   ipv6 address {{intf.ipv6addr}}
