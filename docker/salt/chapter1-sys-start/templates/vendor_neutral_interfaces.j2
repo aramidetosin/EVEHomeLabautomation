@@ -1,5 +1,6 @@
 {% if grains.os == 'junos' %}
 interfaces {
+{% if pillar.interfaces is defined %}
 {% for intf in pillar.interfaces %}
     {{intf.interface}} {
 {% for unit in intf.unit %}
@@ -22,6 +23,7 @@ interfaces {
 {% endfor %}
     }
 {% endfor %}
+{% endif %}
     lo0 {
         unit 0 {
             family inet {
