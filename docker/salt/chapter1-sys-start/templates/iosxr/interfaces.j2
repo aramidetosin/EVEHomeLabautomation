@@ -1,4 +1,5 @@
 {# TO DO - Create filter to get network id and network mask from cidr#}
+{% if pillar.interfaces is defined %}
 {%- set interfaces = pillar.interfaces -%}
 
 {% for interface_dict in interfaces %}
@@ -16,6 +17,7 @@ interface {{intf}}
   no shut
 {% endfor -%}
 {% endfor -%}
+{% endif %}
 interface {{pillar.mgmtint}}
  ipv4 address {{pillar.mgmtipv4}}
  no shut
