@@ -1,4 +1,4 @@
-{% set targets = "r[12345]"%}
+{% set targets = "r[12]"%}
 {% set not_user = "inetzero"%}
 {% set user = "salt"%}
 
