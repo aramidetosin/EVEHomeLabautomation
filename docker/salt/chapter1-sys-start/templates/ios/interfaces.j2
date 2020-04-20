@@ -9,8 +9,8 @@ interface {{intf}}
   {% if "." in intf %}
   encapsulation dot1Q {{intf.split(".")[1]}}
   {% endif %}
-  {% if addr_dict.description %}
-  description {{addr_dict.description}}
+  {% if intf.description %}
+  description {{intf.description}}
   {% endif %}
   {% if unit.ipv4addr is defined %}
   ip address {{unit.ipv4addr("/")[0]}} 255.255.255.0
