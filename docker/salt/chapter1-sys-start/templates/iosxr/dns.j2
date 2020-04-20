@@ -1,3 +1,5 @@
-{% for server in pillar.dns.servers %}
+{% set servers = salt.pillar.get("dns.servers") %}
+
+{% for server in servers %}
 domain name-server {{server}}
 {% endfor %}
