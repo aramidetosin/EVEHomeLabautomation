@@ -1,13 +1,13 @@
 {# TO DO - Create filter to get network id and network mask from cidr#}
 {% if pillar.interfaces is defined %}
 {% for intf in pillar.interfaces %}
-{% if "." in intf %}
-  interface {{intf.split(".")[0]}}
+{% if "." in intf.interface %}
+  interface {{intf.interface.split(".")[0]}}
     no shut
 {% endif %}
-interface {{intf}}
-  {% if "." in intf %}
-  encapsulation dot1Q {{intf.split(".")[1]}}
+interface {{intf.interface}}
+  {% if "." in intf.interface %}
+  encapsulation dot1Q {{intf.interface.split(".")[1]}}
   {% endif %}
   {% if intf.description %}
   description {{intf.description}}
