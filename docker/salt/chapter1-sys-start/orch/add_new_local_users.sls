@@ -9,7 +9,7 @@ check_new_user_not_exist:
     - argsalt.function:
       - user: {{not_user}}
 
-check_new_user_not_exist:
+check_new_user_exist:
   salt.function:
     - name: check_user_configured
     - tgt: {{targets}}
