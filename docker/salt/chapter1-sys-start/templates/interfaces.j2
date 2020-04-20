@@ -1,4 +1,4 @@
-{% if grains.interfaces == 'junos' %}
+{% if grains.os == 'junos' %}
 interfaces {
 {% if pillar.interfaces is defined %}
 {% for intf in pillar.interfaces %}
@@ -39,7 +39,7 @@ interfaces {
         }
     }
 }
-{% elif grains.interfaces == 'ios' %}
+{% elif grains.os == 'ios' %}
 {# TO DO - Create filter to get network id and network mask from cidr#}
 {% if pillar.interfaces is defined %}
 {% for interface_dict in pillar.interfaces %}
