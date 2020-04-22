@@ -1,5 +1,7 @@
 {% set targets = "r[12]"%}
 {% set user = "inetzero"%}
+{% set prefix = "172.16.1.0/24"%}
+{% set dummy_prefix = "6.6.6.6/32"%}
 
 check_new_user_not_exist:
   salt.function:
@@ -7,6 +9,15 @@ check_new_user_not_exist:
     - name: general.user_not_configured
     - arg:
       - user: {{user}}
+
+
+check_prefix_is_active:
+  salt.function:
+    - tgt: {{targets}}
+    - name: routes.prefix_active_in_route_table
+    - arg:
+      - prefix: {{prefix}}:
+
 
 
 push_user_changes:
@@ -37,6 +48,14 @@ push_user_changes:
 
 
 # COMMIT
+check_prefix_is_not_active:
+  salt.function:
+    - tgt: {{targets}}
+    - name: routes.prefix_not_active_in_route_table
+    - arg:
+      - prefix: {{dummy_prefix}}:
+
+
 
 
 check_user_is_configured:
