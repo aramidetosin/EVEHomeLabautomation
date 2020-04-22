@@ -1,4 +1,5 @@
-sudo apt-get update apt-get -y install apt-utils sudo wget openssh-server python3 gnupg git iputils-ping net-tools traceroute mtr vim python3-pip tree  && rm -rf /var/lib/apt/lists/*
+sudo apt-get update 
+sudo apt-get -y install apt-utils sudo wget openssh-server python3 gnupg git iputils-ping net-tools traceroute mtr vim python3-pip tree  && rm -rf /var/lib/apt/lists/*
 
 wget -O - https://repo.saltstack.com/apt/ubuntu/18.04/amd64/latest/SALTSTACK-GPG-KEY.pub | sudo apt-key add -
 sudo touch /etc/apt/sources.list.d/saltstack.list
