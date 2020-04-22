@@ -20,11 +20,11 @@ check_new_user_not_exist:
 
 
 
-push_user_changes:
-  salt.state:
-    - tgt: {{targets}}
-    - sls:
-      - states.system
+# push_user_changes:
+#   salt.state:
+#     - tgt: {{targets}}
+#     - sls:
+#       - states.system
 
 
 # verify_access_to_device:
