@@ -18,3 +18,4 @@ sudo service ssh start
 sudo pip3 install --upgrade pip
 sudo pip3 install napalm
 sudo pip3 install jxmlease
+sudo shutdown -r now
