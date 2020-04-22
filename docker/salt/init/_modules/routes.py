@@ -4,7 +4,7 @@ def prefix_active_in_route_table(prefix, **kwargs):
     Supports;
         junos
         ios
-    CLI Example::
+    CLI Example:
         salt 'r[1-5]' routes.prefix_active_in_route_table prefix="172.16.1.0/24"
     '''
     result_list = []
@@ -29,7 +29,7 @@ def prefix_not_active_in_route_table(prefix, **kwargs):
     Supports;
         junos
         ios
-    CLI Example::
+    CLI Example:
         salt 'r[1-5]' routes.prefix_not_active_in_route_table prefix="172.16.1.0/24"
     '''
     result_list = []
