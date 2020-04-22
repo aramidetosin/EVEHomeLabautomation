@@ -5,7 +5,7 @@ def prefix_active_in_route_table(prefix, **kwargs):
         junos
         ios
     CLI Example::
-        salt '*' routes.prefix_active_in_route_table 1.1.1.1/32
+        salt 'r[1-5]' routes.prefix_active_in_route_table prefix="172.16.1.0/24"
     '''
     result_list = []
     if (__grains__["os"] == "ios") or (__grains__["os"] == "junos"):
@@ -30,7 +30,7 @@ def prefix_not_active_in_route_table(prefix, **kwargs):
         junos
         ios
     CLI Example::
-        salt '*' routes.prefix_not_active_in_route_table 1.1.1.1/32
+        salt 'r[1-5]' routes.prefix_not_active_in_route_table prefix="172.16.1.0/24"
     '''
     result_list = []
     if (__grains__["os"] == "ios") or (__grains__["os"] == "junos"):
