@@ -65,12 +65,12 @@ test_pings2:
         interval: 60
 
 
-check_new_user_exist:
-  salt.function:
-    - tgt: {{targets}}
-    - name: general.check_user_configured
-    - arg:
-      - user: {{user}}
-    - retry:
-        attempts: 2
-        interval: 60
+# check_new_user_exist:
+#   salt.function:
+#     - tgt: {{targets}}
+#     - name: general.check_user_configured
+#     - arg:
+#       - user: {{user}}
+#     - retry:
+#         attempts: 2
+#         interval: 60
