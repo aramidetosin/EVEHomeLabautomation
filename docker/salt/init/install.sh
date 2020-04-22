@@ -12,6 +12,9 @@ sudo echo "master: localhost\npki_dir: /etc/salt/pki/proxy\ncache_dir: /var/cach
 sudo salt-master -d
 sudo salt-minion -d
 
+sudo echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
+sudo service ssh start
+
 sudo pip3 install --upgrade pip
 sudo pip3 install napalm
 sudo pip3 install jxmlease
