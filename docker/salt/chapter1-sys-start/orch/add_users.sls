@@ -15,6 +15,13 @@ push_user_changes:
     - sls:
       - states.system
 
+check_new_user_exist:
+  salt.function:
+    - tgt: {{targets}}
+    - name: general.user_configured
+    - arg:
+      - user: {{user}}
+
 
 # verify_access_to_device:
 #   salt.function:
