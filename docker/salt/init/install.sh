@@ -8,7 +8,11 @@ sudo echo "deb http://repo.saltstack.com/py3/ubuntu/18.04/amd64/latest bionic ma
 sudo apt-get update && apt-get -y install salt-master salt-minion
 sudo echo "master: 127.0.0.1" >> /etc/salt/minion
 sudo touch /etc/salt/proxy
-sudo echo "master: localhost\npki_dir: /etc/salt/pki/proxy\ncache_dir: /var/cache/salt/proxy\nmultiprocessing: False" >> /etc/salt/proxy
+sudo echo "
+master: localhost
+pki_dir: /etc/salt/pki/proxy
+cache_dir: /var/cache/salt/proxy
+multiprocessing: False" >> /etc/salt/proxy
 sudo salt-master -d
 sudo salt-minion -d
 
@@ -18,4 +22,4 @@ sudo service ssh start
 sudo pip3 install --upgrade pip
 sudo pip3 install napalm
 sudo pip3 install jxmlease
-sudo shutdown -r now
+sudo reboot
