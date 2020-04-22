@@ -8,7 +8,7 @@ def prefix_active_in_route_table(prefix, **kwargs):
         salt '*' routes.prefix_active_in_route_table 1.1.1.1/32
     '''
     result_list = []
-    if (__grains__["os"] == "ios") or (__grains__["os"] == "junos"):
+    if (__grains__["os"] == "ios") or (__grains__["os"] == "junos") or (__grains__["os"] == "iosxr"):
         res = __salt__["route.show"](prefix)
         if prefix in res["out"].keys():
             for protocol_list in res["out"][prefix]:
@@ -33,7 +33,7 @@ def prefix_not_active_in_route_table(prefix, **kwargs):
         salt '*' routes.prefix_not_active_in_route_table 1.1.1.1/32
     '''
     result_list = []
-    if (__grains__["os"] == "ios") or (__grains__["os"] == "junos"):
+    if (__grains__["os"] == "ios") or (__grains__["os"] == "junos") or (__grains__["os"] == "iosxr"):
         res = __salt__["route.show"](prefix)
         if prefix in res["out"].keys():
             for protocol_list in res["out"][prefix]:
