@@ -11,8 +11,8 @@ interfaces:
   - ae0.0:
       description: This is a link too
       members:
+        - ge-0/0/0
         - ge-0/0/1
-        - ge-0/0/2
       ipv4addr:
         - 10.1.12.1/24
       min_links: "2"
