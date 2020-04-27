@@ -3,7 +3,7 @@ interfaces {
 {% for intf in pillar.interfaces %}
 {% set lag_intf = False %}
 {%- if "ae" in intf.interface -%}
-{% set lag_intf = True -%}
+    {% set lag_intf = True -%}
 {%- endif -%}
     {{intf.interface}} {
         description {{intf.description}};

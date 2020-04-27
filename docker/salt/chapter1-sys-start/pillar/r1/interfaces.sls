@@ -1,6 +1,6 @@
 interfaces:
   - interface: ge-0/0/2
-    mtu:
+    mtu: 1500
     unit:
       - unit_id: 0
         ipv4addr: ['10.10.1.1/24', '20.10.10.10/24']
