@@ -2,8 +2,7 @@ interfaces {
 {% if pillar.interfaces is defined %}
 {% for intf in pillar.interfaces %}
 {% set lag_intf = False %}
-{% set int_device = intf.interface %}
-{% if "ae" in int_device %}
+{% if intf.interface == "ae0" %}
 {% set lag_intf = True %}
 {% endif %}
     {{intf.interface}} {
