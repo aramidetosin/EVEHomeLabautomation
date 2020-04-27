@@ -16,8 +16,7 @@ check_prefix_is_active:
     - tgt: {{targets}}
     - name: routes.prefix_active_in_route_table
     - arg:
-      - prefix: {{prefix}}:
-
+      - prefix: "172.16.1.0/24"
 
 
 push_user_changes:
@@ -53,14 +52,11 @@ check_prefix_is_not_active:
     - tgt: {{targets}}
     - name: routes.prefix_not_active_in_route_table
     - arg:
-      - prefix: {{dummy_prefix}}:
+      - prefix: "20.20.20.20/32"
 
-
-
-
-check_user_is_configured:
-  salt.function:
-    - tgt: {{targets}}
-    - name: general.user_configured
-    - arg:
-      - user: {{user}}
+# check_user_is_configured:
+#   salt.function:
+#     - tgt: {{targets}}
+#     - name: general.user_configured
+#     - arg:
+#       - user: {{user}}

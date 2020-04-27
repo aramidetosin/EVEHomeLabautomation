@@ -1,43 +1,60 @@
 {% if grains.os == 'junos' %}
 interfaces {
-{% if pillar.interfaces is defined %}
-{% for intf in pillar.interfaces %}
-    {{intf.interface}} {
-{% for unit in intf.unit %}
-        unit {{unit.unit_id}} {
-{% if unit.ipv4addr is defined %}
-            family inet {
-{% for ipadd in unit.ipv4addr %}
-                address {{ipadd}};
-{% endfor %}
+{# TODO - Custom Module/ Jinja Filter to calc min-links from len of lga members#}
+
+    {%- for interface_dict in pillar.interfaces %}
+    {%- for intf, intf_data_dict in interface_dict.items() %}
+    {% set splited_intf = intf.split(".") %}
+    {% set lag_intf = False %}
+
+    {%- if "ae" in intf -%}
+        {% set lag_intf = True -%}
+    {%- endif -%}
+
+
+    {{ splited_intf[0] }} {
+        description {{ intf_data_dict.description }};
+        {%- if intf_data_dict.mtu is defined -%}
+        mtu {{ intf_data_dict.mtu }};
+        {%- endif -%}
+        {%- if lag_intf -%}
+            aggregated-ether-options {
+                minimum-links {{ intf_data_dict.min_links }};
+                lacp {
+                    active;
+                }
             }
-{% endif %}
-{% if unit.ipv6addr is defined %}
+        {%- endif %}
+        unit {{ splited_intf[1] }}  {
+            {%- if intf_data_dict.ipv4addr is defined -%}
+            family inet {
+                {%- for ipv4 in intf_data_dict.ipv4addr %}
+                address {{ ipv4 }};
+                {%- endfor %}
+            }
+            {%- endif %}
+            {%- if intf_data_dict.ipv6addr is defined %}
             family inet6 {
-{% for ipadd in unit.ipv6addr %}
-                address {{ipadd}};
-{% endfor %}
+                {%- for ipv6 in intf_data_dict.ipv6addr %}
+                address {{ ipv6 }};
+                {%- endfor %}
             }
-{% endif %}
-        }
-{% endfor %}
-    }
-{% endfor %}
-{% endif %}
-    lo0 {
-        unit 0 {
-            family inet {
-                address {{pillar.loopbackv4}};
-            }
+            {%- endif %}
         }
     }
-    {{pillar.mgmtint}} {
-        unit 0 {
-            family inet {
-                address {{pillar.mgmtipv4}};
-            }
+
+    {%- if lag_intf -%}
+        {%- for member in intf_data_dict.members -%}
+    {{ member }} {
+        gigether-options {
+            802.3ad {{ splited_intf[0] }};
         }
     }
+        {%- endfor -%}
+    {%- endif -%}
+
+    {% endfor %}
+    {% endfor %}
 }
 {% elif grains.os == 'ios' %}
 {# TO DO - Create filter to get network id and network mask from cidr#}
