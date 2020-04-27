@@ -19,7 +19,7 @@ interfaces {
             }
 {% endif %}
 {% for unit in intf.unit %}
-        unit {{unit.unit_id}} {<=========
+        unit {{unit.unit_id}} {
 {% if unit.ipv4addr is defined %}
             family inet {
 {% for ipadd in unit.ipv4addr %}
@@ -45,7 +45,7 @@ interfaces {
     }
 {% endfor %}
 {% endif %}
-{% endfor %}===
+{% endfor %}
     }
 {% endfor %}
 {% endif %}
