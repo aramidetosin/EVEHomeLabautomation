@@ -1,5 +1,5 @@
 interfaces:
-  - ge-0/0/0.0:
+  - ge-0/0/2.0:
       description: This is a link
       mtu: 
       ipv4addr:
