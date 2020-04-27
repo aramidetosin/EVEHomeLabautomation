@@ -1,5 +1,4 @@
 interfaces {
-{% if pillar.interfaces is defined %}
 {# TODO - Custom Module/ Jinja Filter to calc min-links from len of lga members#}
 
     {%- for interface_dict in pillar.interfaces %}
@@ -55,19 +54,4 @@ interfaces {
 
     {% endfor %}
     {% endfor %}
-{%- endif -%}
-    lo0 {
-        unit 0 {
-            family inet {
-                address {{pillar.loopbackv4}};
-            }
-        }
-    }
-    {{pillar.mgmtint}} {
-        unit 0 {
-            family inet {
-                address {{pillar.mgmtipv4}};
-            }
-        }
-    }
 }
