@@ -2,9 +2,10 @@ interfaces {
 {% if pillar.interfaces is defined %}
 {% for intf in pillar.interfaces %}
 {% set lag_intf = False %}
-{%- if "ae" in intf.interface -%}
-    {% set lag_intf = True -%}
-{%- endif -%}
+{% set int_device = intf.interface %}
+{% if "ae" in int_device %}
+{% set lag_intf = True %}
+{% endif %}
     {{intf.interface}} {
         description {{intf.description}};
 {% if intf.mtu is defined %}
