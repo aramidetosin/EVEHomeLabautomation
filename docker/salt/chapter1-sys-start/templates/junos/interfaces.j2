@@ -1,8 +1,7 @@
 interfaces {
-{% if pillar.interfaces is defined %}
 {% for intf in pillar.interfaces %}
 {% set lag_intf = False %}
-{% if intf.interface == "ae0" %}
+{% if "ae" in intf.interface %}
 {% set lag_intf = True %}
 {% endif %}
     {{intf.interface}} {
@@ -48,7 +47,6 @@ interfaces {
 {% endfor %}===
     }
 {% endfor %}
-{% endif %}
     lo0 {
         unit 0 {
             family inet {
