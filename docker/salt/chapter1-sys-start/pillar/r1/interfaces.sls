@@ -24,4 +24,4 @@ interfaces:
   - em0.0:
       description: Mgmt Interface
       ipv4addr:
-        - 172.16.1.11/24
+        - 10.1.1.1/24
